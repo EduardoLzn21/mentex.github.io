@@ -1,0 +1,95 @@
+<!-- simon.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simón Dice - TDA</title>
+  <link rel="stylesheet" href="css/estilojtdah.css">
+
+</head>
+<body>
+
+  <a class="cta-button" href="tda.php">Regresar</a>
+  <h1>🧠 Simón Dice</h1>
+  <b><p>Sigue el patrón haciendo clic en los colores en el mismo orden</p></b>
+  <div class="simon-container">
+    <button class="btn" id="red" style="background-color: #e74c3c;"></button>
+    <button class="btn" id="green" style="background-color: #2ecc71;"></button>
+    <button class="btn" id="blue" style="background-color: #3498db;"></button>
+    <button class="btn" id="yellow" style="background-color: #f1c40f;"></button>
+  </div>
+
+  <div id="message"><b>Haz clic para comenzar</b></div>
+
+  <script>
+    const colors = ["red", "green", "blue", "yellow"];
+    let sequence = [];
+    let userSequence = [];
+    let waiting = false;
+
+    const message = document.getElementById("message");
+
+    const playSound = (color) => {
+      const audio = new Audio(`https://s3.amazonaws.com/freecodecamp/simonSound${colors.indexOf(color)+1}.mp3`);
+      audio.play();
+    };
+
+    const flash = (color) => {
+      const btn = document.getElementById(color);
+      btn.style.opacity = 0.5;
+      playSound(color);
+      setTimeout(() => {
+        btn.style.opacity = 1;
+      }, 300);
+    };
+
+    const playSequence = async () => {
+      waiting = true;
+      for (let i = 0; i < sequence.length; i++) {
+        flash(sequence[i]);
+        await new Promise(res => setTimeout(res, 700));
+      }
+      waiting = false;
+    };
+
+    const nextRound = async () => {
+    userSequence = [];
+    sequence.push(colors[Math.floor(Math.random() * colors.length)]);
+    message.textContent = "🔄 Mostrando secuencia...";
+    await playSequence();
+    message.textContent = "Tu turno...";
+    };
+
+    const handleClick = (color) => {
+      if (waiting) return;
+      userSequence.push(color);
+      flash(color);
+      playSound(color);
+
+      const index = userSequence.length - 1;
+      if (userSequence[index] !== sequence[index]) {
+        message.textContent = "❌ ¡Perdiste! Recargando...";
+        setTimeout(() => location.reload(), 2000);
+        return;
+      }
+
+      if (userSequence.length === sequence.length) {
+        message.textContent = "✅ ¡Bien hecho! Siguiente ronda...";
+        setTimeout(nextRound, 2000);
+      }
+    };
+
+    colors.forEach(color => {
+      document.getElementById(color).addEventListener("click", () => handleClick(color));
+    });
+
+    document.body.addEventListener("click", () => {
+      if (sequence.length === 0) {
+        message.textContent = "🔄 Mostrando secuencia...";
+        nextRound();
+      }
+    }, { once: true });
+  </script>
+
+</body>
+</html>

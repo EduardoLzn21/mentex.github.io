@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Respira Conmigo - Ansiedad</title>
+  <link rel="stylesheet" href="css/estilojans.css">
+</head>
+<body style="cursor: default;">
+
+  <a class="cta-button" href="tda.php">Regresar</a>
+  <h1>🌬️ Respira Conmigo</h1>
+  <p>Ejercicio de respiración guiada para calmar la ansiedad</p>
+
+  <div id="circle"></div>
+  <div id="instruction">Haz clic en el botón para comenzar</div>
+
+  <button class="start-btn" id="startBtn">🎵 Iniciar ejercicio</button>
+
+  <audio id="bgmusic" loop>
+    <source src="music/musicaans.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <footer>
+    Sigue el ritmo del círculo durante al menos 2 minutos para relajarte
+  </footer>
+
+  <script>
+    const instruction = document.getElementById('instruction');
+    const circle = document.getElementById('circle');
+    const startBtn = document.getElementById('startBtn');
+    const music = document.getElementById("bgmusic");
+
+    const steps = ["Inhala...", "Mantén...", "Exhala...", "Espera..."];
+    const sizes = [1.5, 1.5, 1, 1];
+    let i = 0;
+    let intervalo;
+
+    startBtn.addEventListener("click", () => {
+      music.play();
+
+      instruction.textContent = steps[i];
+      circle.style.transform = `scale(${sizes[i]})`;
+      i = (i + 1) % steps.length;
+      intervalo = setInterval(() => {
+        instruction.textContent = steps[i];
+        circle.style.transform = `scale(${sizes[i]})`;
+        i = (i + 1) % steps.length;
+      }, 3000);
+
+      startBtn.style.display = "none";
+    });
+  </script>
+</body>
+
+
+</html>

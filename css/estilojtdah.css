@@ -1,0 +1,54 @@
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 30px;
+      background-color: #f0f8ff;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      display: block;
+      width: fit-content;
+      margin-left: 0;
+      margin-right: auto;
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+
+    .simon-container {
+      display: grid;
+      grid-template-columns: repeat(2, 120px);
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      width: 120px;
+      height: 120px;
+      border: none;
+      border-radius: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro de Membresía</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ecf0f1;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .registro-form {
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 400px;
+      background-color: white; /* Por defecto */
+      transition: background-color 0.3s ease;
+    }
+
+    .registro-form h2 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .registro-form label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .registro-form input, .registro-form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .registro-form button {
+      margin-top: 20px;
+      width: 100%;
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    .registro-form button:hover {
+      background-color: #732d91;
+    }
+
+    .error {
+      color: #c0392b;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="registro-form" id="formMembresia" action="registro.php" method="POST">
+    <h2 id="titulo">Registrar Membresía</h2>
+
+    <label for="nombre">Nombre completo:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="fecha">Fecha de inicio:</label>
+    <input type="date" id="fecha" name="fecha" required>
+
+    <label for="tipo">Tipo de membresía:</label>
+    <select id="tipo" name="tipo" required>
+      <option value="">Selecciona una opción</option>
+      <option value="Mensual">💳 Mensual</option>
+      <option value="Trimestral">💳 Trimestral</option>
+      <option value="Anual">💳 Anual</option>
+    </select>
+
+    <div class="error" id="mensajeError"></div>
+
+    <button type="submit">Iniciar Membresía</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("formMembresia");
+    const mensajeError = document.getElementById("mensajeError");
+    const tipo = document.getElementById("tipo");
+    const titulo = document.getElementById("titulo");
+
+    tipo.addEventListener("change", function () {
+      const formContainer = form;
+
+      switch (tipo.value) {
+        case "Mensual":
+          formContainer.style.backgroundColor = "#dcd6f7";
+          titulo.textContent = "💳 Membresía Mensual";
+          break;
+        case "Trimestral":
+          formContainer.style.backgroundColor = "#d0e7f9";
+          titulo.textContent = "💳 Membresía Trimestral";
+          break;
+        case "Anual":
+          formContainer.style.backgroundColor = "#d4edda";
+          titulo.textContent = "💳 Membresía Anual";
+          break;
+        default:
+          formContainer.style.backgroundColor = "white";
+          titulo.textContent = "Registrar Membresía";
+      }
+    });
+
+    form.addEventListener("submit", function (event) {
+      mensajeError.textContent = "";
+
+      const nombre = document.getElementById("nombre").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const fecha = document.getElementById("fecha").value.trim();
+      const tipoVal = tipo.value;
+
+      if (!nombre || !email || !fecha || !tipoVal) {
+        mensajeError.textContent = "Por favor, completa todos los campos.";
+        event.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>

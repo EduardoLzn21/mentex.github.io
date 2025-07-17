@@ -1,0 +1,83 @@
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background: #fdf6ff;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff85a2, #8ec5fc);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    .section {
+      padding: 50px 20px;
+    }
+
+    .tda {
+      background-color: #ffffff;
+    }
+
+    .ansiedad {
+      background-color: #f0f7ff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #af3e9e;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .button-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .play-button {
+      background-color: #af3e9e;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .play-button:hover {
+      background-color: #932e87;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      background: #f2f2f2;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+    }

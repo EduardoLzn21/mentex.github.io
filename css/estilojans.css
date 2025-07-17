@@ -1,0 +1,77 @@
+    body {
+      background: linear-gradient(to top, #e0f7fa, #ffffff);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding-top: 50px;
+      color: #00796b;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    #circle {
+      margin: 40px auto;
+      width: 150px;
+      height: 150px;
+      background-color: #80deea;
+      border-radius: 50%;
+      box-shadow: 0 0 30px #4dd0e1;
+      transition: all 3s ease;
+    }
+
+    @keyframes breathe {
+      0%   { transform: scale(1); }
+      25%  { transform: scale(1.5); }
+      50%  { transform: scale(1.5); }
+      75%  { transform: scale(1); }
+      100% { transform: scale(1); }
+    }
+
+    #instruction {
+      font-size: 28px;
+      margin-top: 20px;
+      height: 30px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 16px;
+      color: #555;
+    }
+
+    audio {
+      display: none;
+    }
+
+    .cta-button {
+      display: block;
+      width: fit-content;
+      text-align: left; 
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .start-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #4db6ac;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .start-btn:hover {
+      background-color: #00897b;
+    }
